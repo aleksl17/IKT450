@@ -13,8 +13,7 @@ pipenv install
 ```
 Når man skal installere pip package, bruk "pipenv install x" istedenfor "pip install x". Da blir packages lakt til i pipfilen, og det blir enklere for andre å manage packages.
 
-
-### For [TensorFlow GPU](https://www.tensorflow.org/install/gpu) (optional maybe, vent litt med den her)
+### For [TensorFlow GPU](https://www.tensorflow.org/install/gpu) Her står det mye feil, ikke følg det! Må skrives om.
 Krever nvidia GPU driver 418.x eller nyere. Kan lastes ned [her](https://www.nvidia.com/drivers) ved behov. \
 Last ned [CUDA 10.1 (Feb 2019)](https://developer.nvidia.com/cuda-10.1-download-archive-base?target_os=Windows&target_arch=x86_64&target_version=10&target_type=exelocal). \
 Pass på at CUPTI blir installert med CUDA og at CUDA blir lagt til i path/environment variables.
