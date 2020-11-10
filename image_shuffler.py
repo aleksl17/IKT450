@@ -57,14 +57,13 @@ for i in range(crop_amount):
     ds.append(tmp_crop_img)
 
 
-shuffle_image(ds[1])
+# shuffle_image(ds[1])
 
-
-# pyplot.subplot(211)
-# pyplot.imshow(ds[1])
-# pyplot.subplot(212)
-# pyplot.imshow(shuffle_image(ds[1]))
-# pyplot.show()
+pyplot.subplot(211)
+pyplot.imshow(ds[1])
+pyplot.subplot(212)
+pyplot.imshow(shuffle_image(ds[1]))
+pyplot.show()
 
 # Shuffle images
 # tmp_img = ds[1].copy
