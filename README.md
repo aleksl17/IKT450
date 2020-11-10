@@ -2,10 +2,19 @@
 IKT450 group.ai repository
 
 
-## Requirements (Les nøye!)
-Last ned [Visual Studio 2015, 2017 and 2019 (x64: vc_redist.x64.exe)](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads). \
-Last ned [Python 3.7.9 64-bit (Windows x86-64 executable installer)](https://www.python.org/downloads/release/python-379/). \
-Endre følgende i python installeren: Huk av for "Install for all users" og "Add to system environment variables".
+## How to run
+### Assumptions
+PyCharm version 2019.x or newer
+Pip version 20.x or newer
+Pipenv version 2020.x or newer
+
+### Requirements
+Download [Visual Studio 2015, 2017 and 2019 (x64: vc_redist.x64.exe)](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads). \
+Download [Python 3.7.9 64-bit (Windows x86-64 executable installer)](https://www.python.org/downloads/release/python-379/). \
+Make sure to check "Install for all user" and "Add to system envirnment variables / Path".
+
+### Detailed Configuration
+WiP
 
 Installer pipfilen, kjør:
 ```
