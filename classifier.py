@@ -9,7 +9,7 @@ class_names = ["airplane", "automobile", "bird", "cat", "deer", "dog", "frog", "
 #img_height = 30
 
 # Input from convolution: 36 bits
-input_shape = (36, 1)
+input_shape = (36)
 
 # Create model
 model = Sequential()
