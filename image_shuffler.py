@@ -8,6 +8,7 @@ from matplotlib import pyplot
 
 # Configurable variables
 crop_amount = 9  # Set to "-1" to crop ALL images.
+random.seed(69)
 
 # Variables
 ds = []
@@ -21,18 +22,39 @@ def crop_centered(img, crop_x, crop_y):
     return img[start_x:start_x + crop_x, start_y:start_y + crop_y, :]
 
 
+# Shuffles image in a 3x3 fashion.
 def shuffle_image(img):
     sections = []
-    print("Sections: ", sections)
-    print(img.shape)
-    print("Before: ", img)
-    for p in range(9):
-        section = img[10 * p:10 * p + 10, 10 * p:10 * p + 10, :][10 * p:10 * p + 10, 10 * p:10 * p + 10, :]
-        sections.extend(section)
+    # Divide picture into
+    print("Shape: ", img.shape)
+    for px in range(3):
+        for py in range(3):
+            section = img[10*px:10*px+10, 10*py:10*py+10]
+            sections.append(section)
+    random.shuffle(sections)
     shuffle = numpy.array(sections)
-    print(shuffle.shape)
-    print("After: ", shuffle)
+    print("Shape: ", shuffle.shape)
     return shuffle
+
+
+    # section1 = []
+    # section2 = []
+    # section3 = []
+    # print("Sections: ", sections)
+    # print("Shape: ", img.shape)
+    # print("Length: ", len(img))
+    # print("Before: ", img)
+
+    # pyplot.subplot(211)
+    # pyplot.imshow(img)
+    # pyplot.subplot(212)
+    # pyplot.imshow(sections[8])
+    # pyplot.show()
+    # shuffle = numpy.array(sections)
+
+    # print("Shape: ", shuffle.shape)
+    # print("Length: ", len(shuffle))
+    # print("After: ", shuffle)
 
     # x_len = range(0, x, img_pieces)
     # y_len = range(0, y, img_pieces)
@@ -40,6 +62,7 @@ def shuffle_image(img):
     # sections = ()
     #
     # sections = ((i, j, i + img_pieces, j + img_pieces) for i, j, in product(x_len, y_len))
+    # section = img[10 * p:10 * p + 10, 10 * p:10 * p + 10][10 * p:10 * p + 10, 10 * p:10 * p + 10]
     # print(sections)
     #
     # pieces = [img.crop(section) for section in sections]
@@ -56,13 +79,12 @@ for i in range(crop_amount):
     tmp_crop_img = crop_centered(x_train[i], 30, 30)
     ds.append(tmp_crop_img)
 
-
-# shuffle_image(ds[1])
+bs = shuffle_image(ds[1])
 
 pyplot.subplot(211)
 pyplot.imshow(ds[1])
 pyplot.subplot(212)
-pyplot.imshow(shuffle_image(ds[1]))
+pyplot.imshow(bs[1])
 pyplot.show()
 
 # Shuffle images
