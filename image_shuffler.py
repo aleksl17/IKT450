@@ -24,18 +24,18 @@ def shuffle_image(img):
             section = img[10*px:10*px+10, 10*py:10*py+10]
             sections.append(section)
     # Shuffle images
-    shuffle = numpy.array(sections)
-    combine = list(zip(shuffle, random_head))
+    all_sections = numpy.array(sections)
+    combine = list(zip(all_sections, random_head))
     random.shuffle(combine)
-    shuffle, random_head = zip(*combine)
+    all_sections, random_head = zip(*combine)
     # Convert array of numbers to binary array
     for rh in random_head:
         tmp_list = [0]*9
         tmp_list[rh] = 1
         full_y.extend(tmp_list)
-    return shuffle, full_y
+    return all_sections, full_y
 
-    
+
 # Crops and shuffles input image.
 def image_shuffler(img):
     cropped_img = crop_centered(img)
