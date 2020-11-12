@@ -1,6 +1,7 @@
 # This is the 2d conv
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv2D, Dense, MaxPooling2D, Flatten, LeakyReLU, Dropout
+from tensorflow.keras.optimizers import Adam
 
 #parameters:
 input_shape = (30, 30, 3)
