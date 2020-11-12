@@ -3,11 +3,7 @@ import random
 import tensorflow as tf
 
 # Configurable Global Variables
-crop_amount = 9  # Set to "-1" to crop ALL images. # MOVE TO INPUT
-random.seed(69)
-
-# Global Variables
-ds = []
+# random.seed(69)
 
 
 # Crops 3-dimensional image arrays towards center.
@@ -33,7 +29,7 @@ def shuffle_image(img):
     combine = list(zip(shuffle, random_head))
     random.shuffle(combine)
     shuffle, random_head = zip(*combine)
-    # Convert number y to binary y.
+    # Convert array of numbers to binary array
     for rh in random_head:
         tmp_list = [0]*9
         tmp_list[rh] = 1
@@ -45,14 +41,3 @@ def image_shuffler(img):
     cropped_img = crop_centered(img)
     x_train_shuffled, y_train_shuffled = shuffle_image(cropped_img)
     return x_train_shuffled, y_train_shuffled
-
-(x_train, y_train), (x_test, y_test) = tf.keras.datasets.cifar10.load_data()
-
-# Crop Images
-if crop_amount == -1:
-    crop_amount = len(x_train)
-for i in range(crop_amount):
-    tmp_crop_img = crop_centered(x_train[i])
-    ds.append(tmp_crop_img)
-
-bs, smol_y = shuffle_image(ds[1])
