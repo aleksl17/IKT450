@@ -35,7 +35,7 @@ def img_input(amount):
     return x_train_cropped, x_train_shuffled, y_train_classify_input, y_train_shuffled, x_test_cropped, x_test_shuffled, y_test_classify_input, y_test_shuffled
 
 
-x_train, x_train_shuffle, y_train_classify, y_train_shuffle, x_test, x_test_shuffle, y_test_classify, y_test_shuffle = img_input(9)
+x_train, x_train_shuffle, y_train_classify, y_train_shuffle, x_test, x_test_shuffle, y_test_classify, y_test_shuffle = img_input(25)
 
 pyplot.subplot(211)
 pyplot.imshow(x_train[1])
