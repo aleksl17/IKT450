@@ -28,8 +28,8 @@ def img_input(amount):
     for b in range(amount // 5):
         x_test_image_shuffler, y_test_shuffle_image_shuffler = image_shuffler(x_test_input[b])
         x_test_shuffled.append(x_test_image_shuffler)
-        y_train_shuffle.append(y_test_shuffle_image_shuffler)
-        x_train_cropped = crop_centered(x_train_input[b])
+        y_test_shuffle.append(y_test_shuffle_image_shuffler)
+        x_test_cropped = crop_centered(x_train_input[b])
 
     return x_train_cropped, x_train_shuffled, y_train_classify_input, y_train_shuffle, x_test_cropped, x_test_shuffled, y_test_classify_input, y_test_shuffle
 
