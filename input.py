@@ -25,4 +25,4 @@ def img_input(amount):
     return x_train, y_train_classify_input, y_train_shuffle, x_test, y_test_classify_input, y_test_shuffle
 
 
-x_train, y_train_classify, y_train_shuffle, x_test, y_test_classify, y_test_shuffle = img_input(25)
+x_train, y_train_classify, y_train_shuffle, x_test, y_test_classify, y_test_shuffle = img_input(2)
