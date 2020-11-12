@@ -3,7 +3,6 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv2D, Dense, MaxPooling2D, Flatten, LeakyReLU, Dropout
 
 #parameters:
-size = 30
 input_shape = (30, 30, 3)
 
 def define_conv2d():
