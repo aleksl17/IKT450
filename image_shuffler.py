@@ -1,6 +1,5 @@
 import numpy
 import random
-import tensorflow as tf
 
 # Configurable Global Variables
 # random.seed(69)
