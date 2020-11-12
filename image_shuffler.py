@@ -5,7 +5,7 @@ import random
 # random.seed(69)
 
 
-# Crops 3-dimensional image arrays towards center.
+# Crops 3-dimensional image arrays towards a 30x30 center.
 def crop_centered(img):
     x, y, c = img.shape
     start_x = x//2-(30//2)
@@ -35,7 +35,8 @@ def shuffle_image(img):
         full_y.extend(tmp_list)
     return shuffle, full_y
 
-
+    
+# Crops and shuffles input image.
 def image_shuffler(img):
     cropped_img = crop_centered(img)
     x_train_shuffled, y_train_shuffled = shuffle_image(cropped_img)
