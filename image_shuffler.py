@@ -1,9 +1,11 @@
 import numpy
 import random
 
-
-# Configurable Global Variables
-# random.seed(69)
+# TODO
+# Move "deconstruct" and "reconstruct" code into functions
+# Optimize "de/reconstruct" code with loop
+# Consider moving labeling into separate function
+# Verify label code
 
 
 # Crops 3-dimensional image arrays towards a 30x30 center.
@@ -26,8 +28,10 @@ def shuffle_image(img):
             section = img[10 * px:10 * px + 10, 10 * py:10 * py + 10]
             sections.append(section)
 
-    # Shuffle images
+    # Convert python list to numpy array.
     all_sections = numpy.array(sections)
+
+    # Shuffle images
     combine = list(zip(all_sections, random_head))
     random.shuffle(combine)
     all_sections, random_head = zip(*combine)
