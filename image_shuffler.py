@@ -10,31 +10,6 @@ def crop_centered(img):
     return img[start_x:start_x + 30, start_y:start_y + 30, :]
 
 
-# Shuffles image in a 3x3 fashion.
-def shuffle_image(img):
-    full_y = []
-    random_head = list(range(0, 10))
-
-    # Deconstruct image via function
-    sections = deconstruct_image(img)
-
-    # Shuffle images with labels
-    combine = list(zip(sections, random_head))
-    random.shuffle(combine)
-    sections, random_head = zip(*combine)
-
-    # Convert array of numbers to binary location-based array.
-    for rh in random_head:
-        tmp_list = [0] * 9
-        tmp_list[rh] = 1
-        full_y.extend(tmp_list)
-
-    # Reconstruct image via function.
-    reconstruct = reconstruct_image(sections)
-
-    return reconstruct, full_y
-
-
 # Deconstruct a single array item into a 9-long 10, 10, 3 image array.
 def deconstruct_image(img_item):
     sections = []
@@ -66,6 +41,31 @@ def reconstruct_image(img_array):
     reconstruct = numpy.array(reconstruct)
 
     return reconstruct
+
+
+# Shuffles image in a 3x3 fashion.
+def shuffle_image(img):
+    full_y = []
+    random_head = list(range(0, 10))
+
+    # Deconstruct image via function
+    sections = deconstruct_image(img)
+
+    # Shuffle images with labels
+    combine = list(zip(sections, random_head))
+    random.shuffle(combine)
+    sections, random_head = zip(*combine)
+
+    # Convert array of numbers to binary location-based array.
+    for rh in random_head:
+        tmp_list = [0] * 9
+        tmp_list[rh] = 1
+        full_y.extend(tmp_list)
+
+    # Reconstruct image via function.
+    reconstruct = reconstruct_image(sections)
+
+    return reconstruct, full_y
 
 
 # Crops and shuffles input image.
