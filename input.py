@@ -1,12 +1,13 @@
 # TODO
 # Make processed dataset file and file management
+# check if numpy array or python list
 
 import tensorflow as tf
 from matplotlib import pyplot
 from image_shuffler import image_shuffler, crop_centered
 
 
-# Imports CIFAR10 dataset. Then performes cropping and shuffeling of dataset.
+# Imports CIFAR10 dataset. Then performs cropping and shuffling of dataset.
 def img_input(amount):
     test_amount = 1
     if amount <= -1:
