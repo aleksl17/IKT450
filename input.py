@@ -1,6 +1,5 @@
 # TODO
 # Make processed dataset file and file management
-# check if numpy array or python list
 
 import numpy
 import random
