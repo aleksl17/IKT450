@@ -2,6 +2,7 @@
 # Make processed dataset file and file management
 # check if numpy array or python list
 
+import numpy
 import tensorflow as tf
 from matplotlib import pyplot
 from image_shuffler import image_shuffler, crop_centered
@@ -37,11 +38,21 @@ def img_input(amount):
         y_test_shuffled.append(y_test_image_shuffler)
         x_test_cropped.append(crop_centered(x_test_input[ate]))
 
+    # Convert from list to numpy array.
+    x_train_cropped = numpy.array(x_train_cropped)
+    x_train_shuffled = numpy.array(x_train_shuffled)
+    y_train_classify_input = numpy.array(y_train_classify_input)
+    y_train_shuffled = numpy.array(y_train_shuffled)
+    x_test_cropped = numpy.array(x_test_cropped)
+    x_test_shuffled = numpy.array(x_test_shuffled)
+    y_test_classify_input = numpy.array(y_test_classify_input)
+    y_test_shuffled = numpy.array(y_test_shuffled)
+
     return x_train_cropped, x_train_shuffled, y_train_classify_input, y_train_shuffled, x_test_cropped, x_test_shuffled, y_test_classify_input, y_test_shuffled
 
 
 # Syntax example and dataset visualization example.
-x_train, x_train_shuffle, y_train_classify, y_train_shuffle, x_test, x_test_shuffle, y_test_classify, y_test_shuffle = img_input(25)
+x_train, x_train_shuffle, y_train_classify, y_train_shuffle, x_test, x_test_shuffle, y_test_classify, y_test_shuffle = img_input(50)
 
 pyplot.subplot(211)
 pyplot.imshow(x_train[1])
