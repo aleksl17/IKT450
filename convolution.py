@@ -13,6 +13,7 @@ def define_conv2d():
     model.add(Dropout(0.1))
     model.add(Conv2D(16, kernel_size=(3,3), strides=(2,2), padding='same', activation='sigmoid'))
     model.add(Flatten())
+    model.add(Dense(512, activation='relu'))
     model.add(Dense(36, activation='sigmoid'))
 
     #Present the model

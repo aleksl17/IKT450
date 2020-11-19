@@ -37,8 +37,8 @@ def img_input(amount):
 
 x_train, x_train_shuffle, y_train_classify, y_train_shuffle, x_test, x_test_shuffle, y_test_classify, y_test_shuffle = img_input(25)
 
-pyplot.subplot(211)
-pyplot.imshow(x_train[1])
-pyplot.subplot(212)
-pyplot.imshow(x_train_shuffle[1])
-pyplot.show()
+#pyplot.subplot(211)
+#pyplot.imshow(x_train[1])
+#pyplot.subplot(212)
+#pyplot.imshow(x_train_shuffle[1])
+#pyplot.show()
