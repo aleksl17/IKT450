@@ -3,6 +3,7 @@
 # check if numpy array or python list
 
 import numpy
+import random
 import tensorflow as tf
 from matplotlib import pyplot
 from image_shuffler import image_shuffler, crop_centered
@@ -54,8 +55,9 @@ def img_input(amount):
 # Syntax example and dataset visualization example.
 x_train, x_train_shuffle, y_train_classify, y_train_shuffle, x_test, x_test_shuffle, y_test_classify, y_test_shuffle = img_input(50)
 
+tmp_rand = random.randint(0, 5)
 pyplot.subplot(211)
-pyplot.imshow(x_train[1])
+pyplot.imshow(x_train[tmp_rand])
 pyplot.subplot(212)
-pyplot.imshow(x_train_shuffle[1])
+pyplot.imshow(x_train_shuffle[tmp_rand])
 pyplot.show()
