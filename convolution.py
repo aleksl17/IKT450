@@ -10,6 +10,7 @@ def define_conv2d():
     model = Sequential()
     model.add(Conv2D(32, kernel_size=(3,3), strides=(2,2), padding='same', input_shape=input_shape))
     model.add(LeakyReLU(alpha=0.2))
+    model.add(MaxPooling2D(2,2))
     model.add(Dropout(0.1))
     model.add(Conv2D(16, kernel_size=(3,3), strides=(2,2), padding='same', activation='sigmoid'))
     model.add(Flatten())
