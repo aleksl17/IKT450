@@ -23,11 +23,13 @@ Download and install [Python 3.7.9 64-bit (Windows x86-64 executable installer)]
 Try to match the images below. If "py launcher" options are grayed out, ignore them.
 
 ![](https://i.imgur.com/5JYRAtc.png)
+
 Check "Add Python 3.7 to PATH". Click "Custom Installation".
 
 ![](https://i.imgur.com/OIbtaU2.png)
 
 ![](https://i.imgur.com/cf1Iytq.png)
+
 Check "Install for all users".
 
 Make sure python, pip and pipenv are added to System Properties -> Advanced -> Environment Varaibles -> System variables -> Path: 
@@ -46,9 +48,11 @@ git clone git@github.com:aleksl17/IKT450.git
 Open PyCharm, and create a new project with the following attributes.
 
 ![](https://i.imgur.com/mO8cbaZ.png)
+
 Change "C:\\**BromTeque**\IKT450" to your own **username**.
 
 ![](https://i.imgur.com/lIRO417.png)
+
 Click "Create from Existing Sources" if you get the following pop-up.
 
 Open "Terminal" in PyCharm and write:
@@ -57,6 +61,7 @@ pipenv install
 ```
 
 ![](https://i.imgur.com/O6aEFaC.png)
+
 This might take a while. Be patient.
 
 ### (OPTIONAL) GPU Accelleration Installation Guide
