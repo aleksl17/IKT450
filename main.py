@@ -11,6 +11,8 @@ import matplotlib.pyplot as plt
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.optimizers import Adam, SGD
 
+just_classify = True
+
 #do data stuff here
 x_train, x_train_shuffle, y_train_classify, y_train_shuffle, x_test, x_test_shuffle, y_test_classify, y_test_shuffle = img_input(5000)
 
@@ -56,28 +58,29 @@ classifier_model.compile(loss='binary_crossentropy', optimizer=opt, metrics=['ac
 print("Classifier Model:")
 classifier_model.summary()
 
-# #train puzzle here
-# history = puzzle_model.fit(x_train_shuffle/255, np.asarray(y_train_test), epochs=10000, shuffle=True)
-#
-# #Predictions
-# pred = puzzle_model.predict(x_test_shuffle/255)
-#
-# correct = 0
-# fail = 0
-# for i in range(len(pred)):
-#     if compare(pred[i], y_test_test[i]):
-#         correct += 1
-#     else: fail += 1
-#
-#
-# print("Correct:",correct)
-# print("Fail:",fail)
-# print("Accuracy:",correct/(fail+correct))
-#
-#
-# plt.plot(history.history['accuracy'])
-# plt.show()
-# #train classifier here
+#train puzzle here
+if not(just_classify):
+    history = puzzle_model.fit(x_train_shuffle/255, np.asarray(y_train_test), epochs=10000, shuffle=True)
+
+    #Predictions
+    pred = puzzle_model.predict(x_test_shuffle/255)
+
+    correct = 0
+    fail = 0
+    for i in range(len(pred)):
+        if compare(pred[i], y_test_test[i]):
+            correct += 1
+        else: fail += 1
+
+
+    print("Correct:",correct)
+    print("Fail:",fail)
+    print("Accuracy:",correct/(fail+correct))
+
+
+    plt.plot(history.history['accuracy'])
+    plt.show()
+#train classifier here
 
 
 history = classifier_model.fit(x_train, y_train_classify, epochs=10000, shuffle=True)
