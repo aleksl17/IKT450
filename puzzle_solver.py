@@ -1,6 +1,6 @@
 # This is the puzzle_solver file
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Add
+from tensorflow.keras.layers import Dense, Add, Concatenate
 from tensorflow import split
 from tensorflow import keras
 
@@ -24,7 +24,7 @@ def define_puzzler():
     sub8 = Dense(9, activation="softmax")(split_tensor[8])
 
     #Merge outputs
-    outputs  = Add()([sub0,sub1,sub2,sub3,sub4,sub5,sub6,sub7,sub8])
+    outputs  = Concatenate()([sub0,sub1,sub2,sub3,sub4,sub5,sub6,sub7,sub8])
 
     #Create model from the above
     model = keras.Model(inputs, outputs, name="puzzler")
