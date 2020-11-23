@@ -1,6 +1,6 @@
 # This is the puzzle_solver file
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Add, Concatenate
+from tensorflow.keras.layers import Dense, Concatenate
 from tensorflow import split
 from tensorflow import keras
 
