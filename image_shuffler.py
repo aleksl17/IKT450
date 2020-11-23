@@ -10,6 +10,17 @@ def crop_centered(img):
     return img[start_x:start_x + 30, start_y:start_y + 30, :]
 
 
+# Convert array of numbers to binary location-based array.
+def numbers_to_binary(convert, length):
+    converted = []
+    for rh in convert:
+        tmp_list = [0] * length
+        tmp_list[rh] = 1
+        converted.extend(tmp_list)
+    converted = numpy.array(converted)
+    return converted
+
+
 # Deconstruct a single array item into a 9-long 10, 10, 3 image array.
 def deconstruct_image(img_item):
     sections = []
@@ -56,11 +67,7 @@ def shuffle_image(img):
     random.shuffle(combine)
     sections, random_head = zip(*combine)
 
-    # Convert array of numbers to binary location-based array.
-    for rh in random_head:
-        tmp_list = [0] * 9
-        tmp_list[rh] = 1
-        full_y.extend(tmp_list)
+    full_y = numbers_to_binary(random_head, 9)
 
     # Reconstruct image via function.
     reconstruct = reconstruct_image(sections)
