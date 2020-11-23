@@ -87,7 +87,23 @@ if not(just_classify):
 
 print(y_train_classify)
 
+
 history = classifier_model.fit(x_train/255, y_train_classify, epochs=epochs, shuffle=True)
+
+pred = classifier_model.predict(x_test/255)
+
+correct = 0
+fail = 0
+for i in range(len(pred)):
+    if pred[i] == y_test_classify[i]:
+        correct += 1
+    else:
+        fail += 1
+
+print("Correct:", correct)
+print("Fail:", fail)
+print("Accuracy:", correct / (fail + correct))
+
 plt.plot(history.history['accuracy'])
 plt.show()
 # #train classifier here
