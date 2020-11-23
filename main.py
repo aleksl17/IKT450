@@ -1,12 +1,15 @@
 # This is the main file
 from input import img_input
 
+import numpy
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.optimizers import Adam
+from matplotlib import pyplot
 
 from convolution import define_conv2d
 from classifier import define_classifier
 from puzzle_solver import define_puzzler
+from image_shuffler import image_reconstructor
 
 #do data stuff here
 x_train, x_train_shuffle, y_train_classify, y_train_shuffle, x_test, x_test_shuffle, y_test_classify, y_test_shuffle = img_input(5000)
@@ -36,7 +39,7 @@ classifier_model.summary()
 
 #train puzzle here
 print(y_test_shuffle)
-puzzle_model.fit(x_train_shuffle/255, y_train_shuffle/255, epochs=1000, shuffle=True)
+puzzle_model.fit(x_train_shuffle/255, y_train_shuffle/255, epochs=1, shuffle=True)
 
 y = puzzle_model.predict(x_test_shuffle/255)
 pred = y[0]
@@ -63,6 +66,17 @@ for i in range(9):
 
 print(pred_eval)
 print(y_eval)
+
+single_x_test = [x_test_shuffle[0]]
+single_x_test = numpy.array(single_x_test)
+print("x: ", single_x_test)
+print("x length: ", len(single_x_test))
+print("x shape: ", single_x_test.shape)
+reconstructed = image_reconstructor(single_x_test, pred_eval)
+
+pyplot.subplot(211)
+pyplot.imshow(reconstructed[0])
+pyplot.show()
 
 #train classifier here
 

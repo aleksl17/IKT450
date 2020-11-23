@@ -73,3 +73,40 @@ def image_shuffler(img):
     cropped_img = crop_centered(img)
     x_train_shuffled, y_train_shuffled = shuffle_image(cropped_img)
     return x_train_shuffled, y_train_shuffled
+
+
+# Reconstructs image from image array and y array.
+def image_reconstructor(org_img, reconstruct_y):
+    reconstruct_img = []
+    for oi in range(len(org_img)):
+        # Split image item into 9-long image array.
+        deconstructed_reconstruct_img = deconstruct_image(org_img[oi])
+
+        # Combine 9-long image array and y into a single array.
+        dri_ry_combined = list(zip(reconstruct_y, deconstructed_reconstruct_img))
+
+        # Order array from low to high based on y.
+        ordered_img = [[]]
+        i = 0
+        while len(dri_ry_combined) > 0:
+            if ordered_img[i][i] < lowest:
+                lowest = dri_ry_combined[i]
+            i += 1
+            if i == len(dri_ry_combined):
+                ordered_img.append(lowest)
+                dri_ry_combined.remove(lowest)
+                if dri_ry_combined:
+                    lowest = dri_ry_combined[0]
+                i = 0
+
+        # Separate y and 9-long image array.
+        y, img = zip(*ordered_img)
+
+        reconstruct_ordered_img = reconstruct_image(img)
+
+        reconstruct_img.append(reconstruct_ordered_img)
+
+    # Convert python list into numpy array.
+    reconstruct_img = numpy.array(reconstruct_img)
+
+    return reconstruct_img
