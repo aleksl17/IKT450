@@ -71,9 +71,13 @@ Download and install [CUDA 10.1 (Feb 2019)](https://developer.nvidia.com/cuda-10
 Download [Nvidia CuDNN SDK 7.6 (November 5th, 2019), for CUDA 10.1 (Nvidia Developer Account Required)](https://developer.nvidia.com/compute/machine-learning/cudnn/secure/7.6.5.32/Production/10.1_20191031/cudnn-10.1-windows10-x64-v7.6.5.32.zip).
 
 Exctract the unzipped CuDNN files to their repsective locations:
+
 ``CuDNN7.zip -> cuda\bin\cudnn64_7.dll`` to ``C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\bin\``
+
 ``CuDNN7.zip -> cuda\include\cudnn.h`` to ``C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\include\``
+
 ``CuDNN7.zip -> cuda\lib\x64\cudnn.lib`` to ``C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\lib\x64\\``
+
 Important that these are correct. Please dobble check them.
 
 (OPTIONAL - Not needed) Install [TensorRT 6.0.1](https://docs.nvidia.com/deeplearning/tensorrt/archives/tensorrt-601/tensorrt-install-guide/index.html)
