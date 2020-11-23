@@ -11,7 +11,7 @@ def define_puzzler():
     model.add(Input(input_shape))
     model.add(Dense(36, activation='relu'))
     model.add(Dropout(0.1))
-    model.add(Dense(18, activation='relu'))
+    model.add(Dense(18, activation='sigmoid'))
     model.add(Dense(9, activation='sigmoid'))
 
     model.summary()
