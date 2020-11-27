@@ -13,7 +13,7 @@ from tensorflow.keras.optimizers import Adam, SGD
 
 #globals
 just_classify = True
-epochs = 100
+epochs = 500
 sample_size = 50000
 
 #do data stuff here
@@ -82,7 +82,8 @@ if not(just_classify):
 #train classifier here
 
 classifier_model = Sequential()
-conv_model.trainable = False
+if not just_classify:
+    conv_model.trainable = False
 classifier_model.add(conv_model)
 classifier_model.add(clas_model)
 opt = Adam(lr=0.001, beta_1=0.5)
