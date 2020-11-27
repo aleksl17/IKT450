@@ -13,8 +13,8 @@ from tensorflow.keras.optimizers import Adam, SGD
 
 #globals
 just_classify = True
-epochs = 1000
-sample_size = 5000
+epochs = 100
+sample_size = 50000
 
 #do data stuff here
 x_train, x_train_shuffle, y_train_classify, y_train_shuffle, x_test, x_test_shuffle, y_test_classify, y_test_shuffle = img_input(sample_size)
@@ -53,13 +53,6 @@ puzzle_model.compile(loss='mse', optimizer=Adam(lr=0.001), metrics=['accuracy'])
 print("Puzzle Model:")
 puzzle_model.summary()
 
-classifier_model = Sequential()
-classifier_model.add(conv_model)
-classifier_model.add(clas_model)
-opt = Adam(lr=0.001, beta_1=0.5)
-classifier_model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy'])
-print("Classifier Model:")
-classifier_model.summary()
 
 #train puzzle here
 if not(just_classify):
@@ -80,18 +73,28 @@ if not(just_classify):
     print("Fail:",fail)
     print("Accuracy:",correct/(fail+correct))
 
+    #score = puzzle_model.evaluate(x_test_shuffle/255, y_test_test, verbose=0)
+    #print('Test loss:', score[0])
+    #print('Test accuracy:', score[1])
 
     plt.plot(history.history['accuracy'])
     plt.show()
 #train classifier here
 
-print(y_train_classify)
+classifier_model = Sequential()
+conv_model.trainable = False
+classifier_model.add(conv_model)
+classifier_model.add(clas_model)
+opt = Adam(lr=0.001, beta_1=0.5)
+classifier_model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy'])
+print("Classifier Model:")
+classifier_model.summary()
 
 
 history = classifier_model.fit(x_train/255, y_train_classify, epochs=epochs, shuffle=True)
 plt.plot(history.history['accuracy'])
 plt.show()
 
-score = classifier_model.evaluate(x_test, y_test_classify, verbose=0)
+score = classifier_model.evaluate(x_test/255, y_test_classify, verbose=0)
 print('Test loss:', score[0])
 print('Test accuracy:', score[1])

@@ -20,7 +20,7 @@ def define_classifier():
     # to get a higher accuracy, keep the one
     # that yields lowest loss value. Same goes for dropout
 
-    model.add(Dense(128, activation='relu'))
+    model.add(Dense(36, activation='relu'))
     model.add(Dropout(0.1))
     model.add(Dense(len(class_names), activation='softmax'))
 
