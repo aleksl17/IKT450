@@ -11,10 +11,13 @@ import matplotlib.pyplot as plt
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.optimizers import Adam, SGD
 
+#globals
 just_classify = True
+epochs = 500
+sample_size = 50000
 
 #do data stuff here
-x_train, x_train_shuffle, y_train_classify, y_train_shuffle, x_test, x_test_shuffle, y_test_classify, y_test_shuffle = img_input(5000)
+x_train, x_train_shuffle, y_train_classify, y_train_shuffle, x_test, x_test_shuffle, y_test_classify, y_test_shuffle = img_input(sample_size)
 
 
 y_train_test = []
@@ -50,17 +53,10 @@ puzzle_model.compile(loss='mse', optimizer=Adam(lr=0.001), metrics=['accuracy'])
 print("Puzzle Model:")
 puzzle_model.summary()
 
-classifier_model = Sequential()
-classifier_model.add(conv_model)
-classifier_model.add(clas_model)
-opt = Adam(lr=0.01, beta_1=0.5)
-classifier_model.compile(loss='binary_crossentropy', optimizer=opt, metrics=['accuracy'])
-print("Classifier Model:")
-classifier_model.summary()
 
 #train puzzle here
 if not(just_classify):
-    history = puzzle_model.fit(x_train_shuffle/255, np.asarray(y_train_test), epochs=10000, shuffle=True)
+    history = puzzle_model.fit(x_train_shuffle/255, np.asarray(y_train_test), epochs=epochs, shuffle=True)
 
     #Predictions
     pred = puzzle_model.predict(x_test_shuffle/255)
@@ -77,13 +73,29 @@ if not(just_classify):
     print("Fail:",fail)
     print("Accuracy:",correct/(fail+correct))
 
+    #score = puzzle_model.evaluate(x_test_shuffle/255, y_test_test, verbose=0)
+    #print('Test loss:', score[0])
+    #print('Test accuracy:', score[1])
 
     plt.plot(history.history['accuracy'])
     plt.show()
 #train classifier here
 
+classifier_model = Sequential()
+if not just_classify:
+    conv_model.trainable = False
+classifier_model.add(conv_model)
+classifier_model.add(clas_model)
+opt = Adam(lr=0.001, beta_1=0.5)
+classifier_model.compile(loss='categorical_crossentropy', optimizer=opt, metrics=['accuracy'])
+print("Classifier Model:")
+classifier_model.summary()
 
-history = classifier_model.fit(x_train, y_train_classify, epochs=10000, shuffle=True)
+
+history = classifier_model.fit(x_train/255, y_train_classify, epochs=epochs, shuffle=True)
 plt.plot(history.history['accuracy'])
 plt.show()
-# #train classifier here
+
+score = classifier_model.evaluate(x_test/255, y_test_classify, verbose=0)
+print('Test loss:', score[0])
+print('Test accuracy:', score[1])
